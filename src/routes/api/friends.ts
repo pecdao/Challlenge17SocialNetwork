@@ -1,0 +1,21 @@
+import { Router } from 'express';
+const router = Router();
+import {
+  getAllFriends,
+  getFriendsById,
+  createFriend,
+  deleteFriend,
+  addFriend,
+
+} from '../../controllers/friends.js';
+
+// /api/friends
+router.route('/').get(getAllFriends).post(createFriend);
+
+// /api/friends/:friendId
+router.route('/:friendId').get(getFriendsById).delete(deleteFriend);
+
+// /api/friends/:friendId/add
+router.route('/:friendId/add').post(addFriend);
+
+export { router as friendRouter };
