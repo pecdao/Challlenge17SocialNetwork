@@ -1,13 +1,13 @@
 import { Schema, Types, model, type Document } from 'mongoose';
-import { Router as ExpressRouter } from 'express';
+// import { Router as ExpressRouter } from 'express';
 
 interface Ithoughts extends Document {
     thoughtsId: Schema.Types.ObjectId,
     name: string,
-    unique: true,
-    required: true,
+    // unique: true,
+    // required: true,
     thoughtText: string,
-    length: { min: 1, max: 280 }
+    // length: { min: 1, max: 280 }
 }
 
 const thoughtsSchema = new Schema<Ithoughts>(
@@ -16,7 +16,7 @@ const thoughtsSchema = new Schema<Ithoughts>(
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
-        name: {
+        thoughtText: {
             type: String,
             required: true,
             maxlength: 280,
@@ -24,36 +24,44 @@ const thoughtsSchema = new Schema<Ithoughts>(
             unique: true,
             default: 'thoughts',
         },
+        name: {
+            type: String,
+            required: true,
+            maxlength: 50,
+            minlength: 4,
+            unique: true,
+            default: 'username',
+        }
         },
 );
 
 
-const thoughts = model('thoughts', thoughtsSchema);
+const Thoughts = model('Thoughts', thoughtsSchema);
 
-export default thoughts
-const router = ExpressRouter();
+export default Thoughts;
+// const router = ExpressRouter();
 
-router.get('/', async (_, res) => {
-    try {
-        const thoughtsList = await thoughts.find();
-        res.json(thoughtsList);
-    } catch (err) {
-        res.status(500).json({ message: (err as Error).message });
-    }
-});
+// router.get('/', async (_, res) => {
+//     try {
+//         const thoughtsList = await thoughts.find();
+//         res.json(thoughtsList);
+//     } catch (err) {
+//         res.status(500).json({ message: (err as Error).message });
+//     }
+// });
 
-router.post('/', async (req, res) => {
-    const newThought = new thoughts({
-        name: req.body.name,
-        thoughtText: req.body.thoughtText,
-    });
+// router.post('/', async (req, res) => {
+//     const newThought = new thoughts({
+//         name: req.body.name,
+//         thoughtText: req.body.thoughtText,
+//     });
 
-    try {
-        const savedThought = await newThought.save();
-        res.status(201).json(savedThought);
-    } catch (err) {
-        res.status(400).json({ message: (err as Error).message });
-    }
-});
+//     try {
+//         const savedThought = await newThought.save();
+//         res.status(201).json(savedThought);
+//     } catch (err) {
+//         res.status(400).json({ message: (err as Error).message });
+//     }
+// });
 
-export const thoughtsRouter = router;
+// export const thoughtsRouter = router;

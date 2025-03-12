@@ -1,12 +1,12 @@
 import { Schema, Types, model, type Document } from 'mongoose';
 
 interface Iusername extends Document {
-    assignmentId: Schema.Types.ObjectId,
+    // assignmentId: Schema.Types.ObjectId,
     usernameId: Schema.Types.ObjectId,
     name: string,
-    unique: true,
-    required: true,
-    trim: true,
+    // unique: true,
+    // required: true,
+    // trim: true,
 }
 
 const usernameSchema = new Schema<Iusername>(
@@ -27,6 +27,6 @@ const usernameSchema = new Schema<Iusername>(
 );
 
 
-const username = model('username', usernameSchema);
+const Username = model('Username', usernameSchema);
 
-export default username;
+export default Username;
