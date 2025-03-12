@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import { thoughtRoutes } from './thoughtRoutes';
-import { userRoutes } from './userRoutes';
-import { Schema, model, type Document } from 'mongoose';
+import { thoughtRoutes } from '../api/thoughtRoutes';
+import { userRoutes } from '../api/userRoutes';
 
 const router = Router();
 const userRouterInstance = userRoutes;

@@ -1,5 +1,5 @@
 import express from 'express';
-import routes from '../routes/api/index';
+import routes from '../../api/index';
 
 
 const PORT = process.env.PORT || 3001;

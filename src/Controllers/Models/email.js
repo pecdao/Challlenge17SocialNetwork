@@ -1,12 +1,12 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 
 
-interface IEmail extends Document {
-    name: string;
-    required: true;
-    unique: true;
+// interface IEmail extends Document {
+//     name: string;
+//     required: true;
+//     unique: true;
    
-}
+// }
 
 const emailSchema = new Schema<IEmail>({
     name: {
